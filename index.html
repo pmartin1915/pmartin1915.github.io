@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perry Martin | Project Portfolio</title>
+<style>
+  :root {
+    --accent: #2563eb;
+    --accent-deep: #1d4ed8;
+    --ink: #1c2333;
+    --body: #3a4256;
+    --muted: #6b7386;
+    --hairline: #e3e7ef;
+    --panel: #f7f9fc;
+    --ground: #ffffff;
+    --chip-live-bg: #ecfdf5;   --chip-live-fg: #047857;  --chip-live-line: #a7f3d0;
+    --chip-soon-bg: #eff6ff;   --chip-soon-fg: #1d4ed8;  --chip-soon-line: #bfdbfe;
+    --chip-res-bg:  #f5f3ff;   --chip-res-fg:  #6d28d9;  --chip-res-line:  #ddd6fe;
+    --chip-tool-bg: #f1f5f9;   --chip-tool-fg: #475569;  --chip-tool-line: #cbd5e1;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #7ba3f7;
+      --accent-deep: #9db9f9;
+      --ink: #e8ebf2;
+      --body: #c0c6d4;
+      --muted: #8b93a5;
+      --hairline: #2a3040;
+      --panel: #1a1f2b;
+      --ground: #12161f;
+      --chip-live-bg: #0c2b22;  --chip-live-fg: #4ade80;  --chip-live-line: #1d4d3c;
+      --chip-soon-bg: #14233f;  --chip-soon-fg: #93b8f8;  --chip-soon-line: #274069;
+      --chip-res-bg:  #241d3d;  --chip-res-fg:  #b8a3f5;  --chip-res-line:  #3d3366;
+      --chip-tool-bg: #1e2431;  --chip-tool-fg: #9aa5b8;  --chip-tool-line: #333c4d;
+    }
+  }
+  :root[data-theme="light"] {
+    --accent: #2563eb; --accent-deep: #1d4ed8; --ink: #1c2333; --body: #3a4256;
+    --muted: #6b7386; --hairline: #e3e7ef; --panel: #f7f9fc; --ground: #ffffff;
+    --chip-live-bg: #ecfdf5; --chip-live-fg: #047857; --chip-live-line: #a7f3d0;
+    --chip-soon-bg: #eff6ff; --chip-soon-fg: #1d4ed8; --chip-soon-line: #bfdbfe;
+    --chip-res-bg: #f5f3ff;  --chip-res-fg: #6d28d9;  --chip-res-line: #ddd6fe;
+    --chip-tool-bg: #f1f5f9; --chip-tool-fg: #475569; --chip-tool-line: #cbd5e1;
+  }
+  :root[data-theme="dark"] {
+    --accent: #7ba3f7; --accent-deep: #9db9f9; --ink: #e8ebf2; --body: #c0c6d4;
+    --muted: #8b93a5; --hairline: #2a3040; --panel: #1a1f2b; --ground: #12161f;
+    --chip-live-bg: #0c2b22; --chip-live-fg: #4ade80; --chip-live-line: #1d4d3c;
+    --chip-soon-bg: #14233f; --chip-soon-fg: #93b8f8; --chip-soon-line: #274069;
+    --chip-res-bg: #241d3d;  --chip-res-fg: #b8a3f5;  --chip-res-line: #3d3366;
+    --chip-tool-bg: #1e2431; --chip-tool-fg: #9aa5b8; --chip-tool-line: #333c4d;
+  }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--ground);
+    color: var(--body);
+    line-height: 1.65;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.75rem 1.5rem 4rem;
+    font-size: 0.98rem;
+  }
+  h1, h2, h3 { color: var(--ink); letter-spacing: -0.015em; text-wrap: balance; }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 0.35rem; }
+  h2 { font-size: 1.3rem; margin: 0 0 1rem; }
+  a { color: var(--accent-deep); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  .masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+  }
+  .masthead-text { flex: 1 1 0; min-width: 260px; }
+  .masthead .role { font-size: 1.02rem; color: var(--body); margin: 0 0 0.55rem; }
+  .masthead .contact { font-size: 0.86rem; color: var(--muted); margin: 0; }
+  .masthead .contact a { color: var(--muted); text-decoration: underline; text-decoration-color: var(--hairline); }
+  .qr-box {
+    flex: none;
+    background: #ffffff;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    padding: 12px 12px 5px;
+    text-align: center;
+  }
+  .qr { display: block; width: 72px; height: 72px; color: #1c2333; }
+  .qr-box .qr-label { display: block; font-size: 0.58rem; letter-spacing: 0.03em; color: #6b7386; margin-top: 2px; }
+
+  .eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  section { margin-top: 2.4rem; }
+
+  .pitch-lede {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.12rem;
+    line-height: 1.7;
+    color: var(--ink);
+    background: var(--panel);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.15rem 1.4rem;
+    margin: 0;
+  }
+
+  /* ---- Icon grid ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  @media (max-width: 620px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  .tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+    padding: 0.95rem 0.5rem 0.85rem;
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    background: var(--ground);
+    color: var(--ink);
+    position: relative;
+  }
+  .tile:hover { border-color: var(--accent); text-decoration: none; }
+  .tile .num {
+    position: absolute;
+    top: 0.45rem;
+    left: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .glyph { color: var(--accent); flex: none; }
+  .tile .glyph { width: 32px; height: 32px; margin-top: 0.4rem; }
+  .tile .name { font-size: 0.83rem; font-weight: 650; line-height: 1.25; color: var(--ink); }
+  .chip {
+    display: inline-block;
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+  .chip-live { background: var(--chip-live-bg); color: var(--chip-live-fg); border: 1px solid var(--chip-live-line); }
+  .chip-soon { background: var(--chip-soon-bg); color: var(--chip-soon-fg); border: 1px solid var(--chip-soon-line); }
+  .chip-res  { background: var(--chip-res-bg);  color: var(--chip-res-fg);  border: 1px solid var(--chip-res-line); }
+  .chip-tool { background: var(--chip-tool-bg); color: var(--chip-tool-fg); border: 1px solid var(--chip-tool-line); }
+
+  /* ---- Project cards ---- */
+  .card {
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    padding: 1.35rem 1.5rem 1.2rem;
+    margin-bottom: 1.15rem;
+    background: var(--ground);
+  }
+  .card-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 0.15rem; }
+  .card-head .num { font-size: 0.8rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .card-head h3 { font-size: 1.18rem; margin: 0; }
+  .card-head .glyph { width: 18px; height: 18px; align-self: center; transform: translateY(1px); }
+  .card .kicker { font-size: 0.78rem; color: var(--muted); margin: 0 0 0.7rem; }
+  .sayit {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--ink);
+    border-left: 3px solid var(--accent);
+    padding: 0.1rem 0 0.1rem 0.85rem;
+    margin: 0 0 0.75rem;
+  }
+  .sayit .saylabel {
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-style: normal;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.15rem;
+  }
+  .card p { margin: 0 0 0.75rem; font-size: 0.93rem; }
+  .facts { font-size: 0.82rem; color: var(--body); margin: 0 0 0.35rem; }
+  .facts strong { color: var(--ink); font-weight: 650; }
+  .factlabel { font-weight: 700; font-size: 0.68rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); margin-right: 0.35rem; }
+  .tech { font-size: 0.78rem; color: var(--muted); margin: 0 0 0.55rem; }
+  .card .links { font-size: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.35rem 1.2rem; }
+  .backtop { font-size: 0.75rem; color: var(--muted); }
+
+  /* ---- Breadth section ---- */
+  .more { background: var(--panel); border-radius: 12px; padding: 1.3rem 1.5rem 1.1rem; }
+  .more ul { margin: 0; padding-left: 1.15rem; }
+  .more li { margin-bottom: 0.5rem; font-size: 0.91rem; }
+  .more li strong { color: var(--ink); }
+  .more .tally { font-size: 0.84rem; color: var(--muted); margin: 0.9rem 0 0; }
+
+  .foot {
+    margin-top: 2.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--hairline);
+    font-size: 0.83rem;
+    color: var(--muted);
+  }
+  .foot p { margin: 0 0 0.35rem; }
+
+  /* ---- Print ---- */
+  @media print {
+    :root, :root[data-theme="dark"] {
+      --accent: #2563eb; --accent-deep: #1d4ed8; --ink: #1c2333; --body: #3a4256;
+      --muted: #6b7386; --hairline: #d7dce6; --panel: #f4f6fa; --ground: #ffffff;
+      --chip-live-bg: #ecfdf5; --chip-live-fg: #047857; --chip-live-line: #a7f3d0;
+      --chip-soon-bg: #eff6ff; --chip-soon-fg: #1d4ed8; --chip-soon-line: #bfdbfe;
+      --chip-res-bg: #f5f3ff;  --chip-res-fg: #6d28d9;  --chip-res-line: #ddd6fe;
+      --chip-tool-bg: #f1f5f9; --chip-tool-fg: #475569; --chip-tool-line: #cbd5e1;
+    }
+    body { padding: 0; max-width: none; font-size: 9.4pt; line-height: 1.5; }
+    h1 { font-size: 17pt; }
+    h2 { font-size: 12pt; }
+    section { margin-top: 0.95rem; }
+    .pitch-lede { font-size: 10pt; padding: 0.7rem 1rem; }
+    .grid { gap: 0.45rem; }
+    .tile { padding: 0.55rem 0.3rem 0.5rem; }
+    .tile .glyph { width: 22px; height: 22px; margin-top: 0.2rem; }
+    .card-head .glyph { width: 15px; height: 15px; }
+    .qr { width: 58pt; height: 58pt; }
+    .qr-box { border-color: #d7dce6; }
+    .card { padding: 0.75rem 0.95rem 0.65rem; margin-bottom: 0.55rem; break-inside: avoid; page-break-inside: avoid; }
+    .card p { font-size: 8.9pt; margin-bottom: 0.45rem; }
+    .sayit { font-size: 9.5pt; margin-bottom: 0.45rem; }
+    .card-head h3 { font-size: 11pt; }
+    .more { break-inside: avoid; page-break-inside: avoid; padding: 0.85rem 1rem 0.7rem; }
+    .more li { font-size: 8.9pt; }
+    .grid-section, .masthead-block { break-inside: avoid; page-break-inside: avoid; }
+    .backtop { display: none; }
+    a { color: var(--accent-deep); }
+    .links a::after { content: none; }
+    .print-url { display: inline; }
+  }
+  .print-url { display: none; font-size: 0.78rem; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <defs>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/><path d="M22 10v6"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+    <symbol id="i-pine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m17 14 3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3a1 1 0 0 1-.8 1.7H15l3 3.3a1 1 0 0 1-.7 1.7H17Z"/><path d="M12 22v-3"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></symbol>
+    <symbol id="i-hands" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+    <symbol id="i-ecg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></symbol>
+    <symbol id="i-pill" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></symbol>
+  </defs>
+</svg>
+
+<div class="masthead masthead-block">
+  <div class="masthead-text">
+    <h1>Perry Martin</h1>
+    <p class="role">Pediatric critical care &amp; burn nurse&ensp;·&ensp;DNP&#8209;FNP candidate, UAB (Aug&nbsp;2026)&ensp;·&ensp;Founder, Martin Apps LLC</p>
+    <p class="contact">Birmingham, AL&ensp;·&ensp;<a href="mailto:phmartin@uab.edu">phmartin@uab.edu</a>&ensp;·&ensp;<a href="mailto:pmartin1913@gmail.com">pmartin1913@gmail.com</a>&ensp;·&ensp;(205)&nbsp;837&#8209;3767&ensp;·&ensp;<a href="https://martinapps.dev">martinapps.dev</a></p>
+  </div>
+  <a class="qr-box" href="https://martinapps.dev" aria-label="Scan to visit martinapps.dev">
+    <svg class="qr" viewBox="0 0 25 25" role="img" aria-label="QR code linking to martinapps.dev" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h7v1h-7zM11 0h1v1h-1zM14 0h1v1h-1zM16 0h1v1h-1zM18 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h2v1h-2zM12 1h2v1h-2zM15 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM8 2h4v1h-4zM14 2h2v1h-2zM18 2h1v1h-1zM20 2h3v1h-3zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h2v1h-2zM13 3h1v1h-1zM15 3h2v1h-2zM18 3h1v1h-1zM20 3h3v1h-3zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM10 4h2v1h-2zM13 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h3v1h-3zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM13 5h3v1h-3zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h7v1h-7zM8 7h3v1h-3zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h5v1h-5zM9 8h1v1h-1zM11 8h6v1h-6zM18 8h5v1h-5zM4 9h1v1h-1zM8 9h4v1h-4zM16 9h1v1h-1zM19 9h1v1h-1zM23 9h1v1h-1zM0 10h2v1h-2zM6 10h1v1h-1zM8 10h2v1h-2zM14 10h3v1h-3zM18 10h2v1h-2zM21 10h1v1h-1zM23 10h2v1h-2zM0 11h2v1h-2zM3 11h3v1h-3zM10 11h3v1h-3zM15 11h1v1h-1zM17 11h4v1h-4zM24 11h1v1h-1zM1 12h1v1h-1zM4 12h1v1h-1zM6 12h2v1h-2zM9 12h1v1h-1zM12 12h4v1h-4zM17 12h2v1h-2zM20 12h1v1h-1zM22 12h3v1h-3zM0 13h1v1h-1zM3 13h2v1h-2zM7 13h2v1h-2zM16 13h2v1h-2zM19 13h1v1h-1zM21 13h1v1h-1zM23 13h1v1h-1zM0 14h1v1h-1zM2 14h5v1h-5zM9 14h4v1h-4zM14 14h2v1h-2zM18 14h4v1h-4zM23 14h2v1h-2zM0 15h1v1h-1zM7 15h1v1h-1zM10 15h2v1h-2zM14 15h1v1h-1zM16 15h1v1h-1zM19 15h2v1h-2zM24 15h1v1h-1zM0 16h1v1h-1zM3 16h4v1h-4zM8 16h1v1h-1zM11 16h1v1h-1zM13 16h2v1h-2zM16 16h5v1h-5zM22 16h1v1h-1zM8 17h1v1h-1zM10 17h1v1h-1zM12 17h1v1h-1zM14 17h3v1h-3zM20 17h2v1h-2zM0 18h7v1h-7zM13 18h2v1h-2zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM22 18h3v1h-3zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h1v1h-1zM12 19h1v1h-1zM16 19h1v1h-1zM20 19h2v1h-2zM0 20h1v1h-1zM2 20h3v1h-3zM6 20h1v1h-1zM8 20h1v1h-1zM12 20h1v1h-1zM15 20h6v1h-6zM22 20h3v1h-3zM0 21h1v1h-1zM2 21h3v1h-3zM6 21h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM17 21h2v1h-2zM20 21h5v1h-5zM0 22h1v1h-1zM2 22h3v1h-3zM6 22h1v1h-1zM8 22h2v1h-2zM11 22h2v1h-2zM15 22h3v1h-3zM21 22h2v1h-2zM24 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM11 23h1v1h-1zM15 23h7v1h-7zM24 23h1v1h-1zM0 24h7v1h-7zM8 24h1v1h-1zM11 24h2v1h-2zM18 24h7v1h-7z"/></svg>
+    <span class="qr-label">martinapps.dev</span>
+  </a>
+</div>
+
+<section aria-label="Introduction">
+  <span class="eyebrow">The 30-second version</span>
+  <p class="pitch-lede">I'm a pediatric ICU and burn nurse finishing my doctorate as a family nurse practitioner, and I taught myself to build software. I run a one&#8209;person app company with two iOS apps live on the App Store and an AI board&#8209;exam tutor launching this year. On the research side, I lead a deep&#8209;learning project that measures brain tumors in children with NF1 on a supercomputer. And I build tools for everything else in my life, including one that scores two thousand Alabama tax&#8209;auction properties for land investing.</p>
+</section>
+
+<section class="grid-section" id="top-grid" aria-label="Project index">
+  <h2>Eight projects, at a glance</h2>
+  <ul class="grid">
+    <li><a class="tile" href="#p1"><span class="num">1</span><svg class="glyph" aria-hidden="true"><use href="#i-cap"/></svg><span class="name">BoardBound</span><span class="chip chip-soon">iOS launch in progress</span></a></li>
+    <li><a class="tile" href="#p2"><span class="num">2</span><svg class="glyph" aria-hidden="true"><use href="#i-flame"/></svg><span class="name">Burn Wizard</span><span class="chip chip-live">On the App Store</span></a></li>
+    <li><a class="tile" href="#p3"><span class="num">3</span><svg class="glyph" aria-hidden="true"><use href="#i-pine"/></svg><span class="name">Wilderness Survival Companion</span><span class="chip chip-live">On the App Store</span></a></li>
+    <li><a class="tile" href="#p4"><span class="num">4</span><svg class="glyph" aria-hidden="true"><use href="#i-brain"/></svg><span class="name">OPG Tumor Segmentation</span><span class="chip chip-res">IRB-approved research</span></a></li>
+    <li><a class="tile" href="#p5"><span class="num">5</span><svg class="glyph" aria-hidden="true"><use href="#i-hands"/></svg><span class="name">ED De&#8209;Escalation Protocol</span><span class="chip chip-res">Presented June 2026</span></a></li>
+    <li><a class="tile" href="#p6"><span class="num">6</span><svg class="glyph" aria-hidden="true"><use href="#i-ecg"/></svg><span class="name">ECG Wizard</span><span class="chip chip-tool">Working prototype</span></a></li>
+    <li><a class="tile" href="#p7"><span class="num">7</span><svg class="glyph" aria-hidden="true"><use href="#i-pill"/></svg><span class="name">Medilex</span><span class="chip chip-tool">Cross-platform build</span></a></li>
+    <li><a class="tile" href="#p8"><span class="num">8</span><svg class="glyph" aria-hidden="true"><use href="#i-map"/></svg><span class="name">Land &amp; Auction Analyzer</span><span class="chip chip-tool">In personal use</span></a></li>
+  </ul>
+</section>
+
+<section aria-label="Featured projects">
+  <h2>The projects</h2>
+
+  <article class="card" id="p1">
+    <div class="card-head"><span class="num">1</span><svg class="glyph" aria-hidden="true"><use href="#i-cap"/></svg><h3>BoardBound</h3><span class="chip chip-soon">iOS launch in progress</span></div>
+    <p class="kicker">Clinical education · Martin Apps LLC flagship</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>An AI tutor that preps nurse practitioner students for their board exams. It explains clinical reasoning the way a real preceptor would.</p>
+    <p>Studying for NP boards mostly means grinding through question banks alone. BoardBound pairs a 500+ question bank, tagged to both the AANP and ANCC exam blueprints, with a live AI tutor (built on Claude) that walks through <em>why</em> an answer is right. The tutor is grounded strictly in the human-written rationale attached to each question, so it never invents clinical facts. Adaptive spaced repetition, a readiness dashboard, and a Deep Dive mode for multi-system reasoning round it out. It's a real business: LLC formed, pricing set at $29.99/month, with a long-term path toward institutional licensing to nursing schools.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>500+ blueprint-tagged questions · every AI prompt change graded against a 100-case golden set before release · $29.99/mo or $79.99 sprint pricing</p>
+    <p class="tech">React Native · Expo · TypeScript · Supabase · Claude API</p>
+    <div class="links"><a href="https://martinapps.dev/boardbound/">martinapps.dev/boardbound</a> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p2">
+    <div class="card-head"><span class="num">2</span><svg class="glyph" aria-hidden="true"><use href="#i-flame"/></svg><h3>Burn Wizard</h3><span class="chip chip-live">On the App Store</span></div>
+    <p class="kicker">Clinical education · Martin Apps LLC · free</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>I work in a pediatric burn unit, so I built the app I wished students had. It teaches burn assessment and fluid resuscitation on an interactive body diagram.</p>
+    <p>Burn Wizard teaches the three core calculations of burn care on an interactive, age-adjusted body diagram: the Lund-Browder method for body surface area, the Parkland formula for fluid resuscitation, and Holliday-Segar maintenance fluids. An 8-chapter curriculum runs from pathophysiology through long-term management, with randomized trainer scenarios and clinical documentation templates. Fully translated into Latin-American Spanish, fully offline, and deliberately positioned as an educational tool rather than a clinical device.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>1,700+ automated tests · 8-chapter curriculum · English + Spanish · live on iOS and web</p>
+    <p class="tech">React · TypeScript · PWA (offline-first) · AES-256 encrypted local storage</p>
+    <div class="links"><a href="https://apps.apple.com/us/app/burn-wizard/id6760600512">View on the App Store</a> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p3">
+    <div class="card-head"><span class="num">3</span><svg class="glyph" aria-hidden="true"><use href="#i-pine"/></svg><h3>Wilderness Survival Companion</h3><span class="chip chip-live">On the App Store</span></div>
+    <p class="kicker">Outdoor reference · Martin Apps LLC · free</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>A survival reference that works with zero cell signal. Every entry is sourced from the Army Survival Manual, the CDC, or NOAA, not internet folklore.</p>
+    <p>Built for hikers, hunters, and search-and-rescue volunteers who need answers exactly when they have no connectivity. Six field calculators (water purification, wind chill and heat index, daylight estimation, pace and distance, shelter selection, triage priority), 63+ reference entries covering fire, water, navigation, knots, first aid, and plants (with explicit toxic-lookalike warnings), plus a tactical-red night-vision theme and a Dead Man's Switch check-in timer. 100% offline: no accounts, no tracking, no ads.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>6 field calculators · 63+ sourced reference entries · works in airplane mode · sources: US Army FM 21-76, SAS Survival Handbook, CDC, NOAA</p>
+    <p class="tech">React · TypeScript · PWA (offline-first) · IndexedDB</p>
+    <div class="links"><a href="https://apps.apple.com/us/app/wilderness-survival-companion/id6760920427">View on the App Store</a> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p4">
+    <div class="card-head"><span class="num">4</span><svg class="glyph" aria-hidden="true"><use href="#i-brain"/></svg><h3>OPG Tumor Segmentation</h3><span class="chip chip-res">IRB-approved research</span></div>
+    <p class="kicker">Doctoral research · DNP scholarly project · UAB / Children's of Alabama</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>I'm training a deep-learning model that measures brain tumors in kids with NF1 automatically, in 3D, from their MRI scans. Today that measurement is still done by hand.</p>
+    <p>Children with Neurofibromatosis Type 1 develop optic pathway gliomas whose growth is tracked by hand-measured MRI, a process that is slow and inconsistent between readers. As co-investigator, I lead development of an nnU-Net deep-learning pipeline for automated 3D volumetric measurement, training on UAB's Cheaha supercomputer with NVIDIA A100 GPUs. I recruited the pediatric neuro-oncology and neuroradiology faculty team, authored a scoping review of 28 published studies now in revision at the <em>Journal of Neuro-Oncology</em>, and carried the project through IRB approval. Part of the UAB/Children's of Alabama Clinical Scholars Program.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>28-study scoping review in revision at <em>JNO</em> (Springer Nature) · IRB-approved · $10,000 NVIDIA AI microgrant application submitted · NVIDIA A100 training on Cheaha HPC</p>
+    <p class="tech">Python · nnU-Net v2 · SimpleITK · SLURM / HPC</p>
+    <div class="links"><span class="facts">Research in progress. Happy to talk through it.</span> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p5">
+    <div class="card-head"><span class="num">5</span><svg class="glyph" aria-hidden="true"><use href="#i-hands"/></svg><h3>Pediatric ED De-Escalation Protocol</h3><span class="chip chip-res">Presented June 2026</span></div>
+    <p class="kicker">Doctoral research · DNP quality-improvement capstone (team of 3)</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>Our team built a standardized de-escalation protocol for a pediatric psychiatric ER, so the response to a child in crisis depends on the protocol rather than on who happens to be working that shift.</p>
+    <p>The pediatric psychiatric emergency unit at a large children's hospital had no standardized protocol for behavioral crises. Responses varied by individual experience, driving restraint use and staff injuries. Using the PDSA framework, our three-student DNP team ran the full pre-implementation arc: a gap analysis combining incident-report data, a 12-item staff survey, and a policy review against best-practice benchmarks; then a seven-section tiered protocol spanning early recognition through post-incident debriefing, aligned with trauma-informed care; then a phased implementation plan with simulation-based training and a metrics-based evaluation framework. Presented at a national nursing education dissemination event in June 2026.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>7-section tiered protocol · 3 baseline data sources · published evidence shows structured protocols cut restraint use by 27 to 76 percent</p>
+    <p class="tech">PDSA framework · gap analysis · survey design · evaluation metrics</p>
+    <div class="links"><span class="facts">Abstract and protocol are available on request.</span> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p6">
+    <div class="card-head"><span class="num">6</span><svg class="glyph" aria-hidden="true"><use href="#i-ecg"/></svg><h3>ECG Wizard</h3><span class="chip chip-tool">Working prototype</span></div>
+    <p class="kicker">Clinical education · personal project</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>A web app that reads real hospital-grade ECG waveforms and classifies the rhythm, built on the same public datasets researchers use.</p>
+    <p>An installable web app that analyzes genuine 500&nbsp;Hz ECG recordings from verified public medical datasets (WFDB format) rather than synthetic textbook strips. A Python signal-processing backend extracts twelve features covering rate, rhythm, and waveform morphology, then classifies normal sinus rhythm, atrial fibrillation, and myocardial infarction, with an interactive waveform dashboard on the front end. Built to learn the full clinical ML stack end-to-end: raw signal in, explainable classification out.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>500&nbsp;Hz medical-grade signal data · 12 extracted features · 3 validated rhythm classes</p>
+    <p class="tech">React · TypeScript · Plotly · Python · FastAPI · scikit-learn</p>
+    <div class="links"><a href="https://github.com/pmartin1915/ecg-wizard-pwa">View on GitHub</a> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p7">
+    <div class="card-head"><span class="num">7</span><svg class="glyph" aria-hidden="true"><use href="#i-pill"/></svg><h3>Medilex</h3><span class="chip chip-tool">Cross-platform build</span></div>
+    <p class="kicker">Clinical education · personal project</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>Tinder-style flashcards for medical terminology: swipe through terms, keep a streak, favorite the ones that trip you up.</p>
+    <p>A lightweight study app for the vocabulary layer of healthcare education: swipe-based flashcards for medical terminology with learning-streak tracking and a favorites deck for troublesome terms. One TypeScript codebase ships to iOS, Android, and the web. It is small by design: one thing students actually repeat daily, and nothing else.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>One codebase, three platforms · unit + end-to-end test suites</p>
+    <p class="tech">React Native · Expo · TypeScript</p>
+    <div class="links"><a href="https://github.com/pmartin1915/medilex">View on GitHub</a> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+
+  <article class="card" id="p8">
+    <div class="card-head"><span class="num">8</span><svg class="glyph" aria-hidden="true"><use href="#i-map"/></svg><h3>Land &amp; Auction Analyzer</h3><span class="chip chip-tool">In personal use</span></div>
+    <p class="kicker">Personal tools · real-estate analysis</p>
+    <p class="sayit"><span class="saylabel">Say it out loud</span>It reads the state's entire tax-auction list of about two thousand properties and ranks every parcel by investment value before I've had my coffee.</p>
+    <p>Alabama's Department of Revenue auctions tax-delinquent land, but the listings are built for bureaucrats, not buyers. This system scrapes the full list (~2,000 parcels), validates and enriches each property, scores them on metrics like price per acre, and exports a ranked sheet, with scrapers extending to Arkansas, Texas, and Florida. A companion analysis app layers on portfolio analytics and a prediction engine behind a REST API. The project that proves the skills generalize beyond healthcare.</p>
+    <p class="facts"><span class="factlabel">By the numbers</span>~2,000 parcels scraped and scored per run · 4 states supported · 40+ API endpoints in the companion app</p>
+    <p class="tech">Python · FastAPI · Playwright · React · SQLite · Docker</p>
+    <div class="links"><span class="facts">Live demo happily given.</span> <a class="backtop" href="#top-grid">&uarr; all projects</a></div>
+  </article>
+</section>
+
+<section aria-label="Additional projects">
+  <div class="more">
+    <h2>The workshop behind them</h2>
+    <ul>
+      <li><strong>claude-budget-dispatcher:</strong> an autonomous task runner that wakes every 20 minutes, picks maintenance work across my projects, and executes it with AI agents, all behind a safety gate that blocks any autonomous change to clinical logic.</li>
+      <li><strong>keybroker:</strong> a prototype credential broker issuing short-lived, scoped, attributable API tokens (public on GitHub, MIT-licensed).</li>
+      <li><strong>Frontier &amp; the Veydria project:</strong> an iOS game on TestFlight plus the world behind it, including a custom 2D engine, a worldbuilding canon toolchain, and procedural map generation.</li>
+      <li><strong>Shortless:</strong> a browser extension shipped for both Chrome and Firefox.</li>
+      <li><strong>A personal DevOps hub:</strong> scheduled health checks, dependency audits, and cross-model code review running automatically across the whole portfolio.</li>
+    </ul>
+    <p class="tally">48 registered projects under active portfolio management. The eight above are the tour, not the inventory.</p>
+  </div>
+</section>
+
+<div class="foot">
+  <p>Most repositories are private while products are commercial. <strong>Source code and live demos are available on request.</strong></p>
+  <p>Perry Martin &middot; <a href="mailto:phmartin@uab.edu">phmartin@uab.edu</a> &middot; <a href="mailto:pmartin1913@gmail.com">pmartin1913@gmail.com</a> &middot; (205) 837-3767 &middot; <a href="https://martinapps.dev">martinapps.dev</a></p>
+</div>
+</body>
+</html>
